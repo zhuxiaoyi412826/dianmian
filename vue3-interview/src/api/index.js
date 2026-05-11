@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 // API 配置
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000'
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://dsaol.asia:4431'
 
 const api = axios.create({
   baseURL: API_BASE_URL,

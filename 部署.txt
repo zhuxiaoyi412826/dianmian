@@ -1,0 +1,72 @@
+# 进入项目目录
+cd /opt/interview-assistant/projects1
+
+# 激活虚拟环境
+source .venv_new/bin/activate
+
+# 确认使用的是虚拟环境中的 Python
+which python
+# 退出当前虚拟环境
+deactivate
+
+# 4. 启动服务 HTTPS启动
+python src/main.py -m http -p 5000 --ssl-keyfile certs/server.key --ssl-certfile certs/server.crt
+
+# 5. 测试后端服务
+curl -X POST https://localhost:5000/v1/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{"model": "interview-assistant", "messages": [{"type": "human", "content": "你好"}], "stream": false, "session_id": "test"}' \
+  -k
+
+# 4. 启动服务 HTTP启动
+python src/main.py -m http -p 5000 
+
+
+curl -X POST "http://localhost:5000/v1/chat/completions" \
+  -H "Content-Type: application/json" \
+  -d '{"model": "interview-assistant", "messages": [{"type": "human", "content": "你好"}], "stream": false, "session_id": "test"}'
+
+安装 uv  # Linux/Mac 一键安装
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+
+#生成 requirements.txt（从项目配置）
+uv pip freeze > requirements.txt
+
+# 安装完成后，重启终端或刷新环境变量
+source ~/.bashrc  # 或 source ~/.zshrc
+
+
+
+# 尝试安装 cozeloop
+pip install cozeloop
+
+# 如果找不到，可能是内部包，需要从其他地方获取
+# 检查项目中是否有相关依赖配置
+cat pyproject.toml | grep -i cozeloop
+
+
+# 检查 Python 是否支持 SQLite3
+python -c "import sqlite3; print(sqlite3.version)"
+
+# 输出示例：3.45.0
+
+
+
+which python3.9
+
+python3 -V
+
+ls /usr/bin/python3*  查看已经安装版本
+
+# 切换到指定版本
+sudo update-alternatives --config python3   # 选择需要的版本
+
+# 安装 uvicorn 和其他核心依赖
+pip install uvicorn fastapi langchain langchain-core langgraph requests python-dotenv sqlalchemy alembic apscheduler
+
+# 升级 pip
+python -m pip install --upgrade pip
+
+# 安装所有依赖（包括开发依赖）
+pip install uvicorn fastapi langchain langchain-core langgraph coze-coding-utils requests python-dotenv sqlalchemy alembic 

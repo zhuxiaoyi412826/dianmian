@@ -1,7 +1,9 @@
 .venv\Scripts\python src\main.py -m http -p 5000
 
-安装 uv  # Linux/Mac 一键安装
-curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# 安装完成后，重启终端或刷新环境变量
-source ~/.bashrc  # 或 source ~/.zshrc
+git init    
+git add .
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/your_username/your_repo.git
+git push -u origin main
